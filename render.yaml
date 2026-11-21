@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: viral-clip-ai
+    runtime: python
+    plan: free
+
+    buildCommand: |
+      apt-get update
+      apt-get install -y ffmpeg
+      pip install -r backend/requirements.txt
+
+    startCommand: |
+      uvicorn backend.app:app --host 0.0.0.0 --port $PORT
+
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11"
+
+      - key: JWT_SECRET
+        generateValue: true
+
+      - key: WHISPER_MODEL
+        value: base
+
+      - key: MAX_DOWNLOAD_MB
+        value: "1500"
