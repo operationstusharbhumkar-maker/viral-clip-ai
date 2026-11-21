@@ -6,10 +6,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
-from services.youtube import download_video
-from services.transcript import transcribe
-from services.highlights import find_highlights
-from services.video import create_clip
+from backend.services.youtube import download_video
+from backend.services.transcript import transcribe
+from backend.services.highlights import find_highlights
+from backend.services.video import create_clip
 
 BASE=Path(__file__).resolve().parent
 DB=BASE/'app.db'; DOWNLOADS=BASE/'downloads'; OUTPUT=BASE/'output'; FRONTEND=BASE.parent/'frontend'
